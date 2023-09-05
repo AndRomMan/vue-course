@@ -50,6 +50,7 @@ function removeTodo(todo) {
 </script>
 
 <template>
+  <h1>List component</h1>
   <div class="card">
     <h2>List Rendering</h2>
 

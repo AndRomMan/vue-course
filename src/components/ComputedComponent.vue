@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 let id = 0;
 
@@ -8,8 +8,16 @@ const hideCompleted = ref(false)
 const todos = ref([
   { id: id++, text: 'Learn HTML', done: true },
   { id: id++, text: 'Learn JavaScript', done: true },
-  { id: id++, text: 'Learn Vue', done: false }
+  { id: id++, text: 'Learn Vue', done: true },
+  { id: id++, text: 'Learn CSS', done: false },
+  { id: id++, text: 'Learn TypeScript', done: false },
+  { id: id++, text: 'Learn PHP', done: false },
+  { id: id++, text: 'Learn Laravel', done: false },
 ])
+
+const filteredTodos = computed(() => {
+  return hideCompleted.value ? todos.value.filter((t) => !t.done) : todos.value;
+})
 
 function addTodo() {
   todos.value.push({ id: id++, text: newTodo.value, done: false });
@@ -24,12 +32,13 @@ function removeTodo(todo) {
 
 
 <template>
+  <h1>Computed component</h1>
   <form @submit.prevent="addTodo">
     <input v-model="newTodo">
     <button>Add Todo</button>
   </form>
   <ul>
-    <li v-for="todo in todos" :key="todo.id">
+    <li v-for="todo in filteredTodos" :key="todo.id">
       <input type="checkbox" v-model="todo.done">
       <span :class="{ done: todo.done }">{{ todo.text }}</span>
       <button @click="removeTodo(todo)">X</button>
