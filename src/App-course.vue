@@ -1,5 +1,4 @@
 <script setup>
-
 import Component from './components/course/Component.vue';
 
 </script>
