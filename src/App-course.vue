@@ -1,11 +1,12 @@
 <script setup>
-import Component from './components/course/Component.vue';
-
+import ArrayComponent from './components/course/ArrayComponent.vue';
+// import CounterComponent from './components/course/CounterComponent.vue';
 </script>
 
 <template>
   <h1>Vue3 course</h1>
-  <Component />
+  <ArrayComponent />
+  <!-- <CounterComponent /> -->
 </template>
 
 <style scoped></style>
